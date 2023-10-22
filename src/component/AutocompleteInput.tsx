@@ -186,10 +186,6 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
     // Input click events
     const inputClickEventHandler = (e: MouseEvent) => {
         setDivVisible(!divShowing);
-        if (window.navigator.userAgent.toLowerCase().indexOf("safari") === -1) {
-
-            // TODO:
-        }
     }
     // Input key events
     const inputKeyDownEventHandler = (e: KeyboardEvent) => {
