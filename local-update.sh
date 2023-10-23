@@ -8,5 +8,5 @@ fi
 cd $scriptDirectory
 npx tsc
 cd $currentDirectory
-cp -r $scriptDirectory/* $currentDirectory/node_modules/scent-nextjs
+cp -r $scriptDirectory/dist/ $currentDirectory/node_modules/scent-nextjs
 
