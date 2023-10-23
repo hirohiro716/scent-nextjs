@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
-import { StringObject } from "scent-typescript";
+import { StringObject, UserAgent } from "scent-typescript";
 /**
  * オートコンプリート機能付きのinputコンポーネント。
  *
@@ -38,7 +38,7 @@ const AutocompleteInput = forwardRef(({ items, displayTextMaker, keywordMaker, c
             return;
         }
         if (divShowing) {
-            if (window.navigator.userAgent.toLowerCase().includes("iphone") || window.navigator.userAgent.toLowerCase().includes("ipad")) {
+            if (UserAgent.isSafari()) {
                 // FIXME: Fucking safari
             }
             else {
@@ -76,7 +76,7 @@ const AutocompleteInput = forwardRef(({ items, displayTextMaker, keywordMaker, c
         if (typeof window === "undefined" || window.visualViewport === null || divRef.current === null || inputRef.current === null) {
             return;
         }
-        if (window.navigator.userAgent.toLowerCase().includes("iphone") || window.navigator.userAgent.toLowerCase().includes("ipad")) {
+        if (UserAgent.isSafari()) {
             divRef.current.style.position = "sticky";
             divRef.current.style.height = "9em";
             const inputRect = inputRef.current.getBoundingClientRect();
@@ -105,7 +105,8 @@ const AutocompleteInput = forwardRef(({ items, displayTextMaker, keywordMaker, c
     // Select item
     const [selectedItemDisplayText, setSelectedItemDisplayText] = useState("");
     const itemStyle = {};
-    itemStyle.padding = "0 0.3em";
+    itemStyle.textIndent = "-1em";
+    itemStyle.paddingLeft = "1em";
     itemStyle.cursor = "pointer";
     const selectedItemStyle = { ...itemStyle };
     selectedItemStyle.backgroundColor = "#ddd";
@@ -184,9 +185,6 @@ const AutocompleteInput = forwardRef(({ items, displayTextMaker, keywordMaker, c
     // Input click events
     const inputClickEventHandler = (e) => {
         setDivVisible(!divShowing);
-        if (window.navigator.userAgent.toLowerCase().indexOf("safari") === -1) {
-            // TODO:
-        }
     };
     // Input key events
     const inputKeyDownEventHandler = (e) => {
