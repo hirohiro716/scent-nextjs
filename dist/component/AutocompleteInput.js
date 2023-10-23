@@ -90,6 +90,7 @@ const AutocompleteInput = forwardRef(({ items, displayTextMaker, keywordMaker, c
                 divRef.current.style.marginTop = "-9em";
                 divRef.current.style.marginBottom = "0.3em";
             }
+            divRef.current.style.width = inputRect.width + "px";
         }
     }, []);
     // Autocomplete
