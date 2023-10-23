@@ -109,8 +109,8 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
     // Select item
     const [ selectedItemDisplayText, setSelectedItemDisplayText ] = useState<string>("");
     const itemStyle: CSSProperties = {};
-    itemStyle.textIndent = "-1em";
-    itemStyle.paddingLeft = "1em";
+    itemStyle.textIndent = "-0.5em";
+    itemStyle.paddingLeft = "0.5em";
     itemStyle.cursor = "pointer";
     const selectedItemStyle: CSSProperties = {...itemStyle};
     selectedItemStyle.backgroundColor = "#ddd";

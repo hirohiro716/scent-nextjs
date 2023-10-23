@@ -105,8 +105,8 @@ const AutocompleteInput = forwardRef(({ items, displayTextMaker, keywordMaker, c
     // Select item
     const [selectedItemDisplayText, setSelectedItemDisplayText] = useState("");
     const itemStyle = {};
-    itemStyle.textIndent = "-1em";
-    itemStyle.paddingLeft = "1em";
+    itemStyle.textIndent = "-0.5em";
+    itemStyle.paddingLeft = "0.5em";
     itemStyle.cursor = "pointer";
     const selectedItemStyle = { ...itemStyle };
     selectedItemStyle.backgroundColor = "#ddd";
