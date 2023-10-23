@@ -1,5 +1,5 @@
 import React, { CSSProperties, InputHTMLAttributes, KeyboardEvent, MouseEvent, forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
-import { StringObject } from "scent-typescript";
+import { StringObject, UserAgent } from "scent-typescript";
 
 type AutocompleteInputProps = InputHTMLAttributes<HTMLInputElement> & {
     items: any[],
@@ -46,7 +46,7 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
             return;
         }
         if (divShowing) {
-            if (window.navigator.userAgent.toLowerCase().includes("iphone") || window.navigator.userAgent.toLowerCase().includes("ipad")) {
+            if (UserAgent.isSafari()) {
                 // FIXME: Fucking safari
             } else {
                 const inputRect = inputRef.current.getBoundingClientRect();
@@ -81,7 +81,7 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
         if (typeof window === "undefined" || window.visualViewport === null || divRef.current === null || inputRef.current === null) {
             return;
         }
-        if (window.navigator.userAgent.toLowerCase().includes("iphone") || window.navigator.userAgent.toLowerCase().includes("ipad")) {
+        if (UserAgent.isSafari()) {
             divRef.current.style.position = "sticky";
             divRef.current.style.height = "9em";
             const inputRect = inputRef.current.getBoundingClientRect();
@@ -109,7 +109,8 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
     // Select item
     const [ selectedItemDisplayText, setSelectedItemDisplayText ] = useState<string>("");
     const itemStyle: CSSProperties = {};
-    itemStyle.padding = "0 0.3em";
+    itemStyle.textIndent = "-1em";
+    itemStyle.paddingLeft = "1em";
     itemStyle.cursor = "pointer";
     const selectedItemStyle: CSSProperties = {...itemStyle};
     selectedItemStyle.backgroundColor = "#ddd";
