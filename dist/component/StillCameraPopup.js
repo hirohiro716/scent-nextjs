@@ -40,7 +40,7 @@ const StillCameraPopup = forwardRef(({ showing, dispatch, mimeType = "image/png"
     const [camera] = useState(new StillCamera(videoDivRef));
     const [captured, setCaptured] = useState(false);
     useEffect(() => {
-        if (captured == false) {
+        if (captured === false) {
             camera.restart();
         }
     }, [captured]);
@@ -76,7 +76,7 @@ const StillCameraPopup = forwardRef(({ showing, dispatch, mimeType = "image/png"
             setAlreadyPressed(false);
             camera.start().then(({ video, canvas }) => {
                 video.addEventListener("playing", () => {
-                    if (buttonsRef.current == null) {
+                    if (buttonsRef.current === null) {
                         return;
                     }
                     buttonsRef.current.style.display = "flex";
@@ -110,8 +110,8 @@ const StillCameraPopup = forwardRef(({ showing, dispatch, mimeType = "image/png"
             React.createElement("div", { style: videoDivStyle, ref: videoDivRef },
                 React.createElement(WaitingCircle, { style: imgStyle, ref: imgRef })),
             React.createElement("div", { style: buttonsStyle, ref: buttonsRef },
-                React.createElement("button", { type: "button", onClick: retryButtonEventHandler, disabled: captured == false }, "\u3084\u308A\u76F4\u3059"),
-                captured == false ?
+                React.createElement("button", { type: "button", onClick: retryButtonEventHandler, disabled: captured === false }, "\u3084\u308A\u76F4\u3059"),
+                captured === false ?
                     React.createElement("button", { type: "button", onClick: captureButtonEventHandler }, "\u64AE\u5F71\u3059\u308B")
                     :
                         React.createElement("button", { type: "button", onClick: completeButtonEventHandler }, "\u5B8C\u4E86")))));

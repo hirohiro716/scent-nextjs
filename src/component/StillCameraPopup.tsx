@@ -50,7 +50,7 @@ const StillCameraPopup = forwardRef<HTMLDivElement, StillCameraPopupProps>(({sho
     const [ camera ] = useState<StillCamera>(new StillCamera(videoDivRef));
     const [ captured, setCaptured ] = useState<boolean>(false);
     useEffect(() => {
-        if (captured == false) {
+        if (captured === false) {
             camera.restart();
         }
 
@@ -86,7 +86,7 @@ const StillCameraPopup = forwardRef<HTMLDivElement, StillCameraPopupProps>(({sho
             setAlreadyPressed(false);
             camera.start().then(({video, canvas}) => {
                 video.addEventListener("playing", () => {
-                    if (buttonsRef.current == null) {
+                    if (buttonsRef.current === null) {
                         return;
                     }
                     buttonsRef.current.style.display = "flex";
@@ -120,8 +120,8 @@ const StillCameraPopup = forwardRef<HTMLDivElement, StillCameraPopupProps>(({sho
                     <WaitingCircle style={imgStyle} ref={imgRef} />
                 </div>
                 <div style={buttonsStyle} ref={buttonsRef}>
-                    <button type="button" onClick={retryButtonEventHandler} disabled={captured == false}>やり直す</button>
-                    {captured == false ?
+                    <button type="button" onClick={retryButtonEventHandler} disabled={captured === false}>やり直す</button>
+                    {captured === false ?
                         <button type="button" onClick={captureButtonEventHandler}>撮影する</button>
                     :
                         <button type="button" onClick={completeButtonEventHandler}>完了</button>

@@ -58,7 +58,7 @@ const ImageViewer = forwardRef(({ src, dispatch, style, overlayBackground, ...pr
     const imageRef = useRef(null);
     const imageOnLoad = () => {
         setTimeout(() => {
-            if (imageRef.current == null || waitingCircleRef.current == null) {
+            if (imageRef.current === null || waitingCircleRef.current === null) {
                 return;
             }
             imageRef.current.style.display = "";
@@ -66,7 +66,7 @@ const ImageViewer = forwardRef(({ src, dispatch, style, overlayBackground, ...pr
         }, 500);
     };
     useEffect(() => {
-        if (imageRef.current == null || waitingCircleRef.current == null) {
+        if (imageRef.current === null || waitingCircleRef.current === null) {
             return;
         }
         if (typeof src !== "undefined") {

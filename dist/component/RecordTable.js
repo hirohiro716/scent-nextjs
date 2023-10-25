@@ -8,7 +8,7 @@ import { StringObject } from "scent-typescript";
  */
 const RecordTable = forwardRef(({ columns, identifierMaker, records, elementMaker, leftFunctionButtons, rightFunctionButtons, ...props }, ref) => {
     const defaultIdentifierMaker = (record) => {
-        if (columns.length == 0) {
+        if (columns.length === 0) {
             return null;
         }
         return record[columns[0].physicalName];
@@ -23,7 +23,7 @@ const RecordTable = forwardRef(({ columns, identifierMaker, records, elementMake
         return (React.createElement(React.Fragment, null, StringObject.from(record[column.physicalName]).toString()));
     };
     const tableID = new StringObject(props.id);
-    if (tableID.length() == 0) {
+    if (tableID.length() === 0) {
         tableID.append("idless_record_table");
     }
     const headerKey = tableID.clone().append("-header-");
@@ -88,7 +88,7 @@ const RecordTable = forwardRef(({ columns, identifierMaker, records, elementMake
                             React.createElement("button", { onClick: handler }, key)));
                     })));
             }),
-            records.length == 0 &&
+            records.length === 0 &&
                 React.createElement("tr", null,
                     React.createElement("td", { colSpan: [...Object.keys({ ...leftFunctionButtons }), ...columns, ...Object.keys({ ...rightFunctionButtons })].length },
                         React.createElement("span", { style: { fontSize: "80%", opacity: "0.25" } }, "\u30EC\u30B3\u30FC\u30C9\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3002"))))));

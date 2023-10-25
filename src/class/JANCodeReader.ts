@@ -41,7 +41,7 @@ export default class JANCodeReader {
      */
     public start(callbackForVideoElement?: (video: HTMLVideoElement) => void): Promise<string> {
         return new Promise<string>((resolve, reject) => {
-            if (this.refObject.current == null) {
+            if (this.refObject.current === null) {
                 return;
             }
             const maximumWidth = this.refObject.current.style.maxWidth;
@@ -82,7 +82,7 @@ export default class JANCodeReader {
             observer.observe(this.refObject.current, { childList: true });
             Quagga.onDetected((result: any) => {
                 if (typeof result !== "undefined") {
-                    if (this.validator && this.validator(result.codeResult.code) == false) {
+                    if (this.validator && this.validator(result.codeResult.code) === false) {
                         return;
                     }
                     resolve(result.codeResult.code);

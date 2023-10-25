@@ -68,7 +68,7 @@ const Popup = forwardRef<HTMLDivElement, PopupProps>(({ showing, dispatch, width
             {showing && (
                 <div style={backgroundStyle} onClick={cancelEvent}>
                     <div style={popupStyle} onClick={(e: MouseEvent) => { e.stopPropagation() }} ref={ref} {...props}>
-                        {(typeof hideCancelButton === "undefined" || hideCancelButton == false) && <a style={closeButtonStyle} onClick={cancelEvent}>×</a>}
+                        {(typeof hideCancelButton === "undefined" || hideCancelButton === false) && <a style={closeButtonStyle} onClick={cancelEvent}>×</a>}
                         {props.children}
                     </div>
                 </div>

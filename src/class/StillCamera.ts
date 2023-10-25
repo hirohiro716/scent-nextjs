@@ -32,7 +32,7 @@ export default class StillCamera {
      */
     public start(facingMode: "user" | "environment" = "environment"): Promise<{video: HTMLVideoElement, canvas: HTMLCanvasElement}> {
         return new Promise<{video: HTMLVideoElement, canvas: HTMLCanvasElement}>((resolve, reject) => {
-            if (this.refObject.current == null || this.mediaStream) {
+            if (this.refObject.current === null || this.mediaStream) {
                 return;
             }
             const maximumWidth = this.refObject.current.style.maxWidth;
@@ -47,7 +47,7 @@ export default class StillCamera {
                 audio: false
             };
             navigator.mediaDevices.getUserMedia(config).then((mediaStream: MediaStream) => {
-                if (this.refObject.current == null) {
+                if (this.refObject.current === null) {
                     return;
                 }
                 this.mediaStream = mediaStream;
@@ -100,7 +100,7 @@ export default class StillCamera {
                 return;
             }
             const context = canvas.getContext("2d");
-            if (context == null) {
+            if (context === null) {
                 reject(new DOMException("Could not obtain the canvas context object."));
                 return;
             }

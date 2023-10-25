@@ -18,7 +18,7 @@ type RecordTableProps = HTMLAttributes<HTMLTableElement> & {
  */
 const RecordTable = forwardRef<HTMLTableElement, RecordTableProps>(({columns, identifierMaker, records, elementMaker, leftFunctionButtons, rightFunctionButtons, ...props}, ref): ReactElement => {
     const defaultIdentifierMaker = (record: Record<string, any>): string | null => {
-        if (columns.length == 0) {
+        if (columns.length === 0) {
             return null;
         }
         return record[columns[0].physicalName];
@@ -33,7 +33,7 @@ const RecordTable = forwardRef<HTMLTableElement, RecordTableProps>(({columns, id
         return (<>{StringObject.from(record[column.physicalName]).toString()}</>);
     }
     const tableID = new StringObject(props.id);
-    if (tableID.length() == 0) {
+    if (tableID.length() === 0) {
         tableID.append("idless_record_table");
     }
     const headerKey = tableID.clone().append("-header-");
@@ -120,7 +120,7 @@ const RecordTable = forwardRef<HTMLTableElement, RecordTableProps>(({columns, id
                         </tr>
                     );
                 })}
-                {records.length == 0 &&
+                {records.length === 0 &&
                     <tr>
                         <td colSpan={[...Object.keys({...leftFunctionButtons}), ...columns, ...Object.keys({...rightFunctionButtons})].length}>
                             <span style={{fontSize: "80%", opacity: "0.25"}}>レコードが見つかりません。</span>

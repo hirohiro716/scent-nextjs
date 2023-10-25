@@ -57,7 +57,7 @@ const Popup = forwardRef(({ showing, dispatch, width, hideCancelButton, overlayB
     };
     return (React.createElement(React.Fragment, null, showing && (React.createElement("div", { style: backgroundStyle, onClick: cancelEvent },
         React.createElement("div", { style: popupStyle, onClick: (e) => { e.stopPropagation(); }, ref: ref, ...props },
-            (typeof hideCancelButton === "undefined" || hideCancelButton == false) && React.createElement("a", { style: closeButtonStyle, onClick: cancelEvent }, "\u00D7"),
+            (typeof hideCancelButton === "undefined" || hideCancelButton === false) && React.createElement("a", { style: closeButtonStyle, onClick: cancelEvent }, "\u00D7"),
             props.children)))));
 });
 export default Popup;

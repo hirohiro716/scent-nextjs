@@ -65,7 +65,7 @@ const ImageViewer = forwardRef<HTMLDivElement, ImageViewerProps>(({src, dispatch
     const imageRef = useRef<HTMLImageElement>(null);
     const imageOnLoad = () => {
         setTimeout(() => {
-            if (imageRef.current == null || waitingCircleRef.current == null) {
+            if (imageRef.current === null || waitingCircleRef.current === null) {
                 return;
             }
             imageRef.current.style.display = "";
@@ -73,7 +73,7 @@ const ImageViewer = forwardRef<HTMLDivElement, ImageViewerProps>(({src, dispatch
         }, 500);
     };
     useEffect(() => {
-        if (imageRef.current == null || waitingCircleRef.current == null) {
+        if (imageRef.current === null || waitingCircleRef.current === null) {
             return;
         }
         if (typeof src !== "undefined") {

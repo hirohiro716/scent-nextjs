@@ -25,7 +25,7 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
         const newItems: any[] = [];
         items.forEach((item) => {
             const displayText = StringObject.from(displayTextMaker ? displayTextMaker(item) : item).toString();
-            if (displayText.length > 0 && mapItemAndDisplayText.has(displayText) == false) {
+            if (displayText.length > 0 && mapItemAndDisplayText.has(displayText) === false) {
                 newItems.push(item);
                 mapItemAndDisplayText.set(displayText, item);
             }
@@ -100,7 +100,7 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
     // Autocomplete
     const autocomplete = (itemDisplayText: string) => {
         setDivVisible(false);
-        if (inputRef.current && StringObject.from(itemDisplayText).equals(inputRef.current.value) == false) {
+        if (inputRef.current && StringObject.from(itemDisplayText).equals(inputRef.current.value) === false) {
             inputRef.current.value = itemDisplayText;
             if (callbackAfterAutocomplete) {
                 callbackAfterAutocomplete(mapItemAndDisplayText.get(itemDisplayText));
@@ -150,7 +150,7 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
         setMouseDownItemDisplayText(value);
     }
     const itemMouseUpEventHandler = (e: MouseEvent) => {
-        if (inputRef.current == null || e.button != 0 || typeof mouseDownItemDisplayText === "undefined") {
+        if (inputRef.current === null || e.button != 0 || typeof mouseDownItemDisplayText === "undefined") {
             return;
         }
         autocomplete(mouseDownItemDisplayText);
@@ -163,7 +163,7 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
         return nonDuplicatedItems.map((item) => StringObject.from(displayTextMaker ? displayTextMaker(item) : item).toString());
     });
     const filterItems = () => {
-        if (inputRef.current == null || divRef.current == null) {
+        if (inputRef.current === null || divRef.current === null) {
             return;
         }
         const itemDisplayTexts:string[] = [];
@@ -171,7 +171,7 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
         for (const li of divRef.current.querySelectorAll("li")) {
             const keyword = new StringObject(li.dataset["keyword"]);
             const style = li.style;
-            if (inputValue.length > 0 && keyword.clone().replace(inputValue, "").length() == keyword.length()) {
+            if (inputValue.length > 0 && keyword.clone().replace(inputValue, "").length() === keyword.length()) {
                 style.display = "none";
             } else {
                 style.display = "";
@@ -229,10 +229,10 @@ const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>((
     }
     // Create elements
     const keyPrefix = new StringObject(props.id);
-    if (keyPrefix.length() == 0) {
+    if (keyPrefix.length() === 0) {
         keyPrefix.append(props.name);
     }
-    if (keyPrefix.length() == 0) {
+    if (keyPrefix.length() === 0) {
         keyPrefix.append("idless_autocomplete_input");
     }
     const keyMaker = (index: number) :string => {
