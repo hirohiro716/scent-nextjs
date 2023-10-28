@@ -5,7 +5,7 @@ import WaitingCircle from "../component/WaitingCircle.js";
 /**
  * 静止画撮影ポップアップのコンポーネント。
  *
- * @param props
+ * @param props mimeTypeプロパティのデフォルトは"image/png"。
  * @returns
  */
 const StillCameraPopup = forwardRef(({ showing, dispatch, mimeType = "image/png", maximumLongSide, callbackAfterCapturing, style, ...props }, ref) => {
