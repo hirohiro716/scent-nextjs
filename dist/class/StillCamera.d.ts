@@ -19,6 +19,7 @@ export default class StillCamera {
      *
      * @param facingMode インカメラを使用する場合は指定する。
      * @returns
+     * @throws Error div要素が見つからなかった場合。
      */
     start(facingMode?: "user" | "environment"): Promise<{
         video: HTMLVideoElement;
@@ -28,6 +29,7 @@ export default class StillCamera {
      * video要素に表示されている映像をキャプチャする。画像サイズはcanvas要素の属性値に依存する。
      *
      * @returns
+     * @throws DOMException video要素、canvas要素での処理に失敗した場合。
      */
     capture(): Promise<HTMLCanvasElement>;
     /**
